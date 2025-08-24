@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UnitTest For SEE512</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <header>
+      <img id="logo" src="/Project/Resource/logo.png" alt="" />
+      <div id="navigation_Menu">
+        <a href="#">Cộng đồng</a><a href="#">Hỗ trợ</a
+        ><a href="#">Về chúng tôi</a><a href="#">Liên hệ</a>
+      </div>
+      <i class="fa-solid fa-user"></i>
+    </header>
+
+    <main>
+      <div id="container">
+        <h1 id="container_title">Giải phương trình</h1>
+        <p id="container_type_title">Dạng ax² +bx +c = 0</p>
+        <form id="form_input" action="">
+          <div>
+            <label for="input_a">Nhập a</label>
+            <input id="input_a" type="text" />
+          </div>
+          <div>
+            <label for="input_b">Nhập b</label>
+            <input id="input_b" type="text" />
+          </div>
+          <div>
+            <label for="input_c" style="display: none">Nhập c</label>
+            <input id="input_c" style="display: none" type="text" />
+          </div>
+        </form>
+        <div id="action">
+          <p id="history_title">Lịch sử</p>
+          <div><button>Làm mới</button><button>Tính</button></div>
+        </div>
+        <ul id="history">
+          <li>x² - 10x + 16 = 0, với hai nghiệm phân biệt x₁ = 2, x₂ = 8</li>
+          <li>x² - 6x - 40 = 0, với hai nghiệm phân biệt x₁ = -4, x₂ = -10</li>
+          <li>x² - 8x + 16 = 0, với nghiệm kép x = 4</li>
+          <li>x² + x + 1 = 0, phương trình vô nghiệm thực</li>
+          <li>0x² + 0x = 0, phương trình có vô số nghiệm</li>
+        </ul>
+        <button id="btn_clear">Xóa tất cả</button>
+        <div>
+          <input type="radio" name="type" id="first_ende" , value="1" checked />
+          <label for="first_ende">Phương trình bậc nhất</label>
+        </div>
+        <div>
+          <input type="radio" name="type" id="second_ende" value="2" />
+          <label for="second_ende">Phương trình bậc hai</label>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>Bản quyền &copy;2025 thuộc về Nhóm 18.</p>
+    </footer>
+  </body>
+</html>
