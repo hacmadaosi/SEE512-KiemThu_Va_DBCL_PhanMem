@@ -40,6 +40,5 @@ export function formatQuadratic(a, b, c) {
   }
   parts.push(Math.abs(b) == 1 ? (b > 0 ? "x" : "-x") : `${b}x`);
   parts.push(`${c >= 0 ? "+" : "-"} ${Math.abs(c)}`);
-
   return parts.join(" ");
 }
