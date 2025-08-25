@@ -11,7 +11,7 @@ export function TinhPhuongTrinh(a, b, c) {
       a,
       b,
       c
-    )} = 0, phương trình bậc nhất có nghiệm x = ${x}`;
+    )} = 0, phương trình bậc nhất có nghiệm x = ${x.toFixed(2)}`;
   }
   // PT bậc 2: ax² + bx + c = 0
   let delta = b * b - 4 * a * c;
@@ -27,29 +27,19 @@ export function TinhPhuongTrinh(a, b, c) {
       a,
       b,
       c
-    )} = 0, với hai nghiệm phân biệt x₁ = ${x1}, x₂ = ${x2}`;
+    )} = 0, với hai nghiệm phân biệt x₁ = ${x1.toFixed(2)}, x₂ = ${x2.toFixed(
+      2
+    )}`;
   }
 }
-
 export function formatQuadratic(a, b, c) {
   let parts = [];
-
   if (a != 0) {
-    parts.push(a == 1 ? "x²" : a == -1 ? "-x²" : `${a}x²`);
+    parts.push(Math.abs(a) == 1 ? (a > 0 ? "x²" : "-x²") : `${a}x²`);
+    parts.push(b < 0 ? " - " : " + ");
   }
-
-  if (b != 0) {
-    let sign = b > 0 ? "+" : "-";
-    let value = Math.abs(b) == 1 ? "x" : `${Math.abs(b)}x`;
-    parts.push(`${sign} ${value}`);
-  }
-
-  if (c != 0) {
-    let sign = c > 0 ? "+" : "-";
-    parts.push(`${sign} ${Math.abs(c)}`);
-  }
-
-  if (parts.length == 0) return "0";
+  parts.push(Math.abs(b) == 1 ? (b > 0 ? "x" : "-x") : `${b}x`);
+  parts.push(`${c >= 0 ? "+" : "-"} ${Math.abs(c)}`);
 
   return parts.join(" ");
 }

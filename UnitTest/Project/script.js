@@ -34,18 +34,14 @@ document.addEventListener("DOMContentLoaded", () => {
   btn_Submit.addEventListener("click", () => {
     lbe_Result.style.display = "block";
     history_title.style.color = "white";
-    if (_controllerType == 1) {
-      _addResultToArray(
-        list_History,
-        TinhPhuongTrinh(0, inputA.value, inputB.value)
-      );
-    } else {
-      _addResultToArray(
-        list_History,
-        TinhPhuongTrinh(inputA.value, inputB.value, inputC.value)
-      );
-    }
+    let result =
+      _controllerType == 1
+        ? TinhPhuongTrinh(0, inputA.value, inputB.value)
+        : TinhPhuongTrinh(inputA.value, inputB.value, inputC.value);
+    _addResultToArray(list_History, result);
+    lbe_Result.textContent = "Kết quả: " + result;
     _refreshHistory();
+
     btn_Clear.style.display = "block";
   });
 
@@ -73,6 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
   const _addResultToArray = (arrX, value) => {
+    if (arrX.length > 5) {
+      arrX.shift();
+    }
     arrX.push(value);
   };
 

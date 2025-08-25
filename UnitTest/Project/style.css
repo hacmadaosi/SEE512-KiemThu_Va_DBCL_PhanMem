@@ -104,6 +104,7 @@ footer {
 }
 #result {
     display: none;
+    font-size: 14px;
 }
 #action {
     display: flex;
