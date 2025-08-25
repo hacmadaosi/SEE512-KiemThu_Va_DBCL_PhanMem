@@ -1,4 +1,4 @@
-import { solveLinearEquation } from "./feature.js";
+import { TinhPhuongTrinh } from "./feature.js";
 
 let _controllerType = 1;
 
@@ -37,7 +37,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (_controllerType == 1) {
       _addResultToArray(
         list_History,
-        solveLinearEquation(inputA.value, inputB.value)
+        TinhPhuongTrinh(0, inputA.value, inputB.value)
+      );
+    } else {
+      _addResultToArray(
+        list_History,
+        TinhPhuongTrinh(inputA.value, inputB.value, inputC.value)
       );
     }
     _refreshHistory();
