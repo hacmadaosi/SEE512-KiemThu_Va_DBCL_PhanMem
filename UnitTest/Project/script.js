@@ -15,6 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let lbe_Result = document.getElementById("result");
 
   let _controllerType = 1;
+  let list_History = [];
+
+  history_title.style.color = "transparent";
+  btn_Clear.style.display = "none";
 
   const _refreshInput = () => {
     lbe_Result.style.display = "none";
@@ -23,13 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
     inputC.value = "";
   };
 
-  let list_History = [
-    "x² - 10x + 16 = 0, với hai nghiệm phân biệt x₁ = 2, x₂ = 8",
-    "x² - 6x - 40 = 0, với hai nghiệm phân biệt x₁ = -4, x₂ = -10",
-    "x² - 8x + 16 = 0, với nghiệm kép x = 4",
-    "x² + x + 1 = 0, phương trình vô nghiệm thực",
-    "0x² + 0x = 0, phương trình có vô số nghiệm",
-  ];
+  // let list_History = [
+  //   "x² - 10x + 16 = 0, với hai nghiệm phân biệt x₁ = 2, x₂ = 8",
+  //   "x² - 6x - 40 = 0, với hai nghiệm phân biệt x₁ = -4, x₂ = -10",
+  //   "x² - 8x + 16 = 0, với nghiệm kép x = 4",
+  //   "x² + x + 1 = 0, phương trình vô nghiệm thực",
+  //   "0x² + 0x = 0, phương trình có vô số nghiệm",
+  // ];
 
   btn_Submit.addEventListener("click", () => {
     lbe_Result.style.display = "block";
