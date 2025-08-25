@@ -2,18 +2,21 @@ export function kiemTra_Rong(a, b, c = null) {
   if (c === null) return a !== "" && b !== "";
   return a !== "" && b !== "" && c !== "";
 }
-export function solveEquation(a, b, c) {
-  if (typeof a !== "number" || typeof b !== "number" || typeof c !== "number") {
-    return "Lỗi: Hệ số phải là số";
-  }
-  return true; 
+export function kiemTra_KieuSo(a, b, c) {
+  //return typeof a === "number" && typeof b === "number" && typeof c === "number";
+  return !isNaN(a) && !isNaN(b) && !isNaN(c);
 }
-export function TinhPhuongTrinh(a, b, c) {
+export function giai_PhuongTrinh(a, b, c) {
+  
   if (!kiemTra_Rong(a, b, c)) 
-    return "Lỗi: Các hệ số không được để trống";
-  const check = solveEquation(a, b, c);
-  if (check !== true) 
-    return check;
+    return "Dữ liệu nhập vào không được bỏ trống";
+  // Bởi vì khi kiểm tra số từ người nhập á là nó mặc định string nên phải đổi về số mới kiểm tra được
+  // đổi sau khi xác nhận các giá trị không được rỗng ok chưa
+  a = Number(a);
+  b = Number(b);
+  c = Number(c);
+  if (!kiemTra_KieuSo(a, b, c))
+    return "Dữ liệu nhập vào phải là kiểu số";
   else{
     if (a == 0 && b == 0 && c == 0) {
     return `${formatQuadratic(a, b, c)} = 0, phương trình có vô số nghiệm`;
