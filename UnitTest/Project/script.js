@@ -1,3 +1,5 @@
+let _controllerType = 1;
+
 document.addEventListener("DOMContentLoaded", () => {
   // Xử lý sự kiện người dùng chọn phép tính
   let radioType = document.getElementsByName("type");
@@ -25,17 +27,16 @@ document.addEventListener("DOMContentLoaded", () => {
   function _clearHistory() {}
   for (let ratio of radioType) {
     ratio.addEventListener("change", () => {
-      // Lấy textContent của label kế input
-      console.log("Title radio:");
       if (ratio.value == 1) {
-        titleType.textContent = "Dạng ax + b = 0";
-        inputC.style.display = "none";
-        inputC.previousElementSibling.style.display = "none";
+        _controllerType = 1;
       } else {
-        titleType.textContent = "Dạng ax² +bx +c = 0";
-        inputC.style.display = "block";
-        inputC.previousElementSibling.style.display = "block";
+        _controllerType = 2;
       }
+      titleType.textContent =
+        _controllerType == 1 ? "Dạng ax + b = 0" : "Dạng ax² +bx +c = 0";
+      inputC.style.display = _controllerType == 1 ? "none" : "block";
+      inputC.previousElementSibling.style.display =
+        _controllerType == 1 ? "none" : "block";
     });
   }
 });
