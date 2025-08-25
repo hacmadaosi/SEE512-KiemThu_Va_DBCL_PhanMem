@@ -1,5 +1,7 @@
 import { solveLinearEquation } from "./feature.js";
 
+let _controllerType = 1;
+
 document.addEventListener("DOMContentLoaded", () => {
   // Khai báo các biến đối tượng giao diện
   let inputA = document.getElementById("input_a");
