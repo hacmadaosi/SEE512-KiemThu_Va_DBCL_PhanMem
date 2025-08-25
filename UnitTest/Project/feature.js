@@ -1,6 +1,21 @@
+export function kiemTra_Rong(a, b, c = null) {
+  if (c === null) return a !== "" && b !== "";
+  return a !== "" && b !== "" && c !== "";
+}
+export function solveEquation(a, b, c) {
+  if (typeof a !== "number" || typeof b !== "number" || typeof c !== "number") {
+    return "Lỗi: Hệ số phải là số";
+  }
+  return true; 
+}
 export function TinhPhuongTrinh(a, b, c) {
-  console.log(a, b, c);
-  if (a == 0 && b == 0 && c == 0) {
+  if (!kiemTra_Rong(a, b, c)) 
+    return "Lỗi: Các hệ số không được để trống";
+  const check = solveEquation(a, b, c);
+  if (check !== true) 
+    return check;
+  else{
+    if (a == 0 && b == 0 && c == 0) {
     return `${formatQuadratic(a, b, c)} = 0, phương trình có vô số nghiệm`;
   } else if (a == 0 && b == 0 && c != 0) {
     return `${formatQuadratic(a, b, c)} = 0, phương trình vô nghiệm`;
@@ -28,6 +43,7 @@ export function TinhPhuongTrinh(a, b, c) {
       b,
       c
     )} = 0, với hai nghiệm phân biệt x₁ = ${x1}, x₂ = ${x2}`;
+  }
   }
 }
 
