@@ -13,7 +13,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
       rel="stylesheet"
     />
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </head>
   <body>
     <header>
@@ -28,7 +28,7 @@
     <main>
       <div id="container">
         <h1 id="container_title">Giải phương trình</h1>
-        <p id="container_type_title">Dạng ax² +bx +c = 0</p>
+        <p id="container_type_title">Dạng ax + b = 0</p>
         <form id="form_input" action="">
           <div>
             <label for="input_a">Nhập a</label>
@@ -42,10 +42,14 @@
             <label for="input_c" style="display: none">Nhập c</label>
             <input id="input_c" style="display: none" type="text" />
           </div>
+          <p id="result">Kết quả:</p>
         </form>
         <div id="action">
           <p id="history_title">Lịch sử</p>
-          <div><button>Làm mới</button><button>Tính</button></div>
+          <div>
+            <button id="btn_refresh">Làm mới</button>
+            <button id="btn_submit">Tính</button>
+          </div>
         </div>
         <ul id="history">
           <li>x² - 10x + 16 = 0, với hai nghiệm phân biệt x₁ = 2, x₂ = 8</li>

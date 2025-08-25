@@ -1,15 +1,27 @@
-let _controllerType = 1;
-
 document.addEventListener("DOMContentLoaded", () => {
-  // Xử lý sự kiện người dùng chọn phép tính
-  let radioType = document.getElementsByName("type");
-  let titleType = document.getElementById("container_type_title");
+  // Khai báo các biến đối tượng giao diện
   let inputA = document.getElementById("input_a");
   let inputB = document.getElementById("input_b");
   let inputC = document.getElementById("input_c");
+
+  let radioType = document.getElementsByName("type");
+  let titleType = document.getElementById("container_type_title");
   let ulHistory = document.getElementById("history");
-  let btn_Clear = document.getElementById("btn_clear");
   let history_title = document.getElementById("history_title");
+
+  let btn_Clear = document.getElementById("btn_clear");
+  let btn_Refresh = document.getElementById("btn_refresh");
+  let btn_Submit = document.getElementById("btn_submit");
+  let lbe_Result = document.getElementById("result");
+
+  let _controllerType = 1;
+
+  const _refreshInput = () => {
+    lbe_Result.style.display = "none";
+    inputA.value = "";
+    inputB.value = "";
+    inputC.value = "";
+  };
 
   let list_History = [
     "x² - 10x + 16 = 0, với hai nghiệm phân biệt x₁ = 2, x₂ = 8",
@@ -18,13 +30,42 @@ document.addEventListener("DOMContentLoaded", () => {
     "x² + x + 1 = 0, phương trình vô nghiệm thực",
     "0x² + 0x = 0, phương trình có vô số nghiệm",
   ];
+
+  btn_Submit.addEventListener("click", () => {
+    lbe_Result.style.display = "block";
+    history_title.style.color = "white";
+    _addResultToArray(list_History, "adf");
+    _refreshHistory();
+    btn_Clear.style.display = "block";
+  });
+
+  btn_Refresh.addEventListener("click", () => {
+    _refreshInput();
+  });
+
   btn_Clear.addEventListener("click", () => {
-    ulHistory.innerHTML = "";
+    list_History = [];
+    _refreshHistory();
     btn_Clear.style.display = "none";
     history_title.style.color = "transparent";
   });
-  function _refreshHistory() {}
-  function _clearHistory() {}
+
+  const _clearHistory = () => {
+    ulHistory.innerHTML = "";
+  };
+
+  const _refreshHistory = () => {
+    _clearHistory();
+    list_History.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      ulHistory.appendChild(li);
+    });
+  };
+  const _addResultToArray = (arrX, value) => {
+    arrX.push(value);
+  };
+
   for (let ratio of radioType) {
     ratio.addEventListener("change", () => {
       if (ratio.value == 1) {
