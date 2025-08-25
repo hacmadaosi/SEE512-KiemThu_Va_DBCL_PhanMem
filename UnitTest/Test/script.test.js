@@ -29,7 +29,7 @@ describe("Test module giai_PhuongTrinh(a, b, c)", () => {
   it("Với a=1, b=-10, c=16 → phương trình bậc 2, có nghiệm", () => {
     const result = giai_PhuongTrinh(1, -10, 16);
     expect(result).to.include(
-      "x² - 10x + 16 = 0, với hai nghiệm phân biệt x₁ = 8, x₂ = 2"
+      "x² - 10x + 16 = 0, với hai nghiệm phân biệt x₁ = 8.00, x₂ = 2.00"
     );
   });
 

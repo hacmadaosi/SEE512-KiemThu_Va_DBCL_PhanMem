@@ -55,7 +55,7 @@ function formatQuadratic(a, b, c) {
     parts.push(Math.abs(a) == 1 ? (a > 0 ? "x²" : "-x²") : `${a}x²`);
     parts.push(b < 0 ? " - " : " + ");
   }
-  parts.push(Math.abs(b) == 1 ? (b > 0 ? "x" : "-x") : `${b}x`);
-  parts.push(`${c >= 0 ? "+" : "-"} ${Math.abs(c)}`);
-  return parts.join(" ");
+  parts.push(Math.abs(b) == 1 ? (b > 0 ? "x" : "-x") : `${Math.abs(b)}x`);
+  parts.push(` ${c >= 0 ? "+" : "-"} ${Math.abs(c)}`);
+  return parts.join("");
 }
