@@ -1,3 +1,5 @@
+import { solveLinearEquation } from "./feature.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   // Khai báo các biến đối tượng giao diện
   let inputA = document.getElementById("input_a");
@@ -27,18 +29,15 @@ document.addEventListener("DOMContentLoaded", () => {
     inputC.value = "";
   };
 
-  // let list_History = [
-  //   "x² - 10x + 16 = 0, với hai nghiệm phân biệt x₁ = 2, x₂ = 8",
-  //   "x² - 6x - 40 = 0, với hai nghiệm phân biệt x₁ = -4, x₂ = -10",
-  //   "x² - 8x + 16 = 0, với nghiệm kép x = 4",
-  //   "x² + x + 1 = 0, phương trình vô nghiệm thực",
-  //   "0x² + 0x = 0, phương trình có vô số nghiệm",
-  // ];
-
   btn_Submit.addEventListener("click", () => {
     lbe_Result.style.display = "block";
     history_title.style.color = "white";
-    _addResultToArray(list_History, "adf");
+    if (_controllerType == 1) {
+      _addResultToArray(
+        list_History,
+        solveLinearEquation(inputA.value, inputB.value)
+      );
+    }
     _refreshHistory();
     btn_Clear.style.display = "block";
   });
@@ -84,4 +83,11 @@ document.addEventListener("DOMContentLoaded", () => {
         _controllerType == 1 ? "none" : "block";
     });
   }
+  const _solveLinearEquation = (a, b) => {
+    if (a != 0) {
+      return `${a}x ${b > 0 ? "+" : "-"} ${
+        b != 0 ? b : ""
+      } = 0, với nghiệm x = ${-b / a}`;
+    }
+  };
 });

@@ -13,7 +13,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
       rel="stylesheet"
     />
-    <script src="script.js" defer></script>
+    <script src="script.js" type="module"></script>
   </head>
   <body>
     <header>
@@ -51,7 +51,13 @@
             <button id="btn_submit">Tính</button>
           </div>
         </div>
-        <ul id="history"></ul>
+        <ul id="history">
+          <!-- <li>x² - 10x + 16 = 0, với hai nghiệm phân biệt x₁ = 2, x₂ = 8</li>
+          <li>x² - 6x - 40 = 0, với hai nghiệm phân biệt x₁ = -4, x₂ = -10</li>
+          <li>x² - 8x + 16 = 0, với nghiệm kép x = 4</li>
+          <li>x² + x + 1 = 0, phương trình vô nghiệm thực</li>
+          <li>0x² + 0x = 0, phương trình có vô số nghiệm</li> -->
+        </ul>
         <button id="btn_clear">Xóa tất cả</button>
         <div>
           <input type="radio" name="type" id="first_ende" , value="1" checked />
