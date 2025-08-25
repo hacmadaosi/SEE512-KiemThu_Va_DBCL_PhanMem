@@ -1,4 +1,4 @@
-import { TinhPhuongTrinh } from "./feature.js";
+import { giai_PhuongTrinh } from "./feature.js";
 
 let _controllerType = 1;
 
@@ -21,60 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let _controllerType = 1;
   let list_History = [];
 
-  history_title.style.color = "transparent";
-  btn_Clear.style.display = "none";
-
-  const _refreshInput = () => {
-    lbe_Result.style.display = "none";
-    inputA.value = "";
-    inputB.value = "";
-    inputC.value = "";
-  };
-
-  btn_Submit.addEventListener("click", () => {
-    lbe_Result.style.display = "block";
-    history_title.style.color = "white";
-    let result =
-      _controllerType == 1
-        ? TinhPhuongTrinh(0, inputA.value, inputB.value)
-        : TinhPhuongTrinh(inputA.value, inputB.value, inputC.value);
-    _addResultToArray(list_History, result);
-    lbe_Result.textContent = "Kết quả: " + result;
-    _refreshHistory();
-
-    btn_Clear.style.display = "block";
-  });
-
-  btn_Refresh.addEventListener("click", () => {
-    _refreshInput();
-  });
-
-  btn_Clear.addEventListener("click", () => {
-    list_History = [];
-    _refreshHistory();
-    btn_Clear.style.display = "none";
-    history_title.style.color = "transparent";
-  });
-
-  const _clearHistory = () => {
-    ulHistory.innerHTML = "";
-  };
-
-  const _refreshHistory = () => {
-    _clearHistory();
-    list_History.forEach((item) => {
-      const li = document.createElement("li");
-      li.textContent = item;
-      ulHistory.appendChild(li);
-    });
-  };
-  const _addResultToArray = (arrX, value) => {
-    if (arrX.length > 5) {
-      arrX.shift();
-    }
-    arrX.push(value);
-  };
-
+  /* Thiết lập mặc định */
+  history_title.style.color = "transparent"; // ẩn tiêu đề lịch sử
+  btn_Clear.style.display = "none"; // ẩn nút xóa tất cả
+  // Kiểm tra ratio input người dùng chọn - thay đổi giao diện
   for (let ratio of radioType) {
     ratio.addEventListener("change", () => {
       if (ratio.value == 1) {
@@ -89,11 +39,61 @@ document.addEventListener("DOMContentLoaded", () => {
         _controllerType == 1 ? "none" : "block";
     });
   }
-  const _solveLinearEquation = (a, b) => {
-    if (a != 0) {
-      return `${a}x ${b > 0 ? "+" : "-"} ${
-        b != 0 ? b : ""
-      } = 0, với nghiệm x = ${-b / a}`;
+
+  /* Xử lý sự kiện trên giao diện */
+  // Xử lý sự kiện người dùng nhập nút tính
+  btn_Submit.addEventListener("click", () => {
+    lbe_Result.style.display = "block";
+    history_title.style.color = "white";
+    let result =
+      _controllerType == 1
+        ? giai_PhuongTrinh(0, inputA.value, inputB.value)
+        : giai_PhuongTrinh(inputA.value, inputB.value, inputC.value);
+    _addResultToArray(list_History, result);
+    lbe_Result.textContent = "Kết quả: " + result;
+    _refreshHistory();
+
+    btn_Clear.style.display = "block";
+  });
+
+  // Xử lý sự kiện người dùng nhấn làm mới
+  btn_Refresh.addEventListener("click", () => {
+    _refreshInput();
+  });
+
+  // Xử lý sự kiện người dùng nhấn xóa tất cả
+  btn_Clear.addEventListener("click", () => {
+    list_History = [];
+    _refreshHistory();
+    btn_Clear.style.display = "none";
+    history_title.style.color = "transparent";
+  });
+
+  /* Arrow Function xử lý logic */
+  // Xóa các phần tử trong lịch sử
+  const _clearHistory = () => {
+    ulHistory.innerHTML = "";
+  };
+  // Xóa dữ liệu đang tồn tại trên ô nhập liệu
+  const _refreshInput = () => {
+    lbe_Result.style.display = "none";
+    inputA.value = "";
+    inputB.value = "";
+    inputC.value = "";
+  };
+  // Làm mới lịch sử tính toán
+  const _refreshHistory = () => {
+    _clearHistory();
+    list_History.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      ulHistory.appendChild(li);
+    });
+  };
+  const _addResultToArray = (arrX, value) => {
+    if (arrX.length > 5) {
+      arrX.shift();
     }
+    arrX.push(value);
   };
 });

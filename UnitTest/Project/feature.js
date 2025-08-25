@@ -1,4 +1,5 @@
-export function TinhPhuongTrinh(a, b, c) {
+// Hàm giải phương trình
+export function giai_PhuongTrinh(a, b, c) {
   console.log(a, b, c);
   if (a == 0 && b == 0 && c == 0) {
     return `${formatQuadratic(a, b, c)} = 0, phương trình có vô số nghiệm`;
@@ -32,7 +33,8 @@ export function TinhPhuongTrinh(a, b, c) {
     )}`;
   }
 }
-export function formatQuadratic(a, b, c) {
+// Hàm định dạng kết quả in ra màn hình
+function formatQuadratic(a, b, c) {
   let parts = [];
   if (a != 0) {
     parts.push(Math.abs(a) == 1 ? (a > 0 ? "x²" : "-x²") : `${a}x²`);
@@ -42,3 +44,7 @@ export function formatQuadratic(a, b, c) {
   parts.push(`${c >= 0 ? "+" : "-"} ${Math.abs(c)}`);
   return parts.join(" ");
 }
+
+export const kiemTra_Rong = (a, b, c) => {
+  return a != "" && b != "" && c != "";
+};
