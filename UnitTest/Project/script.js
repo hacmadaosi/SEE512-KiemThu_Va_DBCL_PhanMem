@@ -1,5 +1,29 @@
 let _controllerType = 1;
-
+function TinhPhuongTrinh(a, b, c){
+  if (a === 0 && b === 0 && c === 0) {
+    return `${a}x² + ${b}x + ${c} = 0, phương trình có vô số nghiệm`;
+  }
+  if (a === 0 && b === 0 && c !== 0) {
+    return `${a}x² + ${b}x + ${c} = 0, phương trình vô nghiệm`;
+  }
+  if (a === 0) {
+    // PT bậc nhất: bx + c = 0
+    let x = -c / b;
+    return `${a}x² + ${b}x + ${c} = 0, phương trình bậc nhất có nghiệm x = ${x}`;
+  }
+  // PT bậc 2: ax² + bx + c = 0
+  let delta = b * b - 4 * a * c;
+  if (delta < 0) {
+    return `${a}x² + ${b}x + ${c} = 0, phương trình vô nghiệm thực`;
+  } else if (delta === 0) {
+    let x = -b / (2 * a);
+    return `${a}x² + ${b}x + ${c} = 0, với nghiệm kép x = ${x}`;
+  } else {
+    let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+    let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+    return `${a}x² + ${b}x + ${c} = 0, với hai nghiệm phân biệt x₁ = ${x1}, x₂ = ${x2}`;
+  }
+}
 document.addEventListener("DOMContentLoaded", () => {
   // Xử lý sự kiện người dùng chọn phép tính
   let radioType = document.getElementsByName("type");
