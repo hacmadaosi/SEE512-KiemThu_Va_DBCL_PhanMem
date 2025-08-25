@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   history_title.style.color = "transparent"; // ẩn tiêu đề lịch sử
   btn_Clear.style.display = "none"; // ẩn nút xóa tất cả
   // Kiểm tra ratio input người dùng chọn - thay đổi giao diện
+
   for (let ratio of radioType) {
     ratio.addEventListener("change", () => {
       if (ratio.value == 1) {
